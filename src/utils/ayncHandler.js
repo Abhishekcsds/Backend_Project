@@ -1,15 +1,19 @@
 
 //APPROACH 1--> USONG PROMISES
 
-const asyncHandler=(requestHandler)=>{
-    (req,res,next)=>{
-        Promise.resolve(requestHandler(req,res,next))
-        .catch((err)=>next(err))
-    }
-}
+// asyncHandler is a higher-order function that wraps any async route handler
+const asyncHandler = (requestHandler) => {
+    // Returns a new function that Express will use as middleware
+    return  (req, res, next) => {
+        // If the async function throws an error, Promise.reject will catch it
+        Promise.resolve(requestHandler(req, res, next))
+               .catch((err) => next(err)); // Pass error to Express error handler
+    };
+};
+
+export { asyncHandler };
 
 
-export {asyncHandler}
 
 
 
