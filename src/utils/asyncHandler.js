@@ -1,5 +1,5 @@
 
-//APPROACH 1--> USONG PROMISES
+//APPROACH 1--> USiNG PROMISES
 
 // asyncHandler is a higher-order function that wraps any async route handler
 const asyncHandler = (requestHandler) => {
